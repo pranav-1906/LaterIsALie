@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaterIsALie.</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <h1>LaterIsALie<span class="dot">.</span></h1>
+            </div>
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
+                <i class="ph ph-sun" id="theme-icon"></i>
+            </button>
+        </header>
+
+        <main>
+            <!-- Decide For Me Section -->
+            <section class="glass-panel accent-panel">
+                <div class="panel-header">
+                    <h2><i class="ph-fill ph-lightning"></i> What should I do right now?</h2>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Time Available (mins)</label>
+                        <input type="number" id="avail-time" value="60">
+                    </div>
+                    <div class="input-group">
+                        <label>Current Energy (1-5)</label>
+                        <input type="number" id="current-energy" value="3" min="1" max="5">
+                    </div>
+                    <button id="decide-btn" class="primary-btn">Decide For Me</button>
+                </div>
+                <div id="active-timer" class="hidden"></div>
+            </section>
+
+            <!-- Add to the Void Section -->
+            <section class="glass-panel">
+                <div class="task-input-wrapper">
+                    <i class="ph ph-keyboard corner-hint"> Press '/' to focus</i>
+                    <input type="text" id="task-title" placeholder="" autocomplete="off">
+                </div>
+                <div class="input-grid three-cols">
+                    <div class="input-group">
+                        <label>Duration</label>
+                        <input type="number" id="task-duration" value="30">
+                    </div>
+                    <div class="input-group">
+                        <label>Priority</label>
+                        <input type="number" id="task-priority" value="3" min="1" max="5">
+                    </div>
+                    <div class="input-group">
+                        <label>Energy</label>
+                        <input type="number" id="task-energy" value="3" min="1" max="5">
+                    </div>
+                </div>
+                <button id="add-btn" class="secondary-btn">
+                    <span>Add to the Void</span>
+                    <i class="ph ph-arrow-down"></i>
+                </button>
+            </section>
+
+            <!-- Filters & Backlog -->
+            <div class="backlog-controls">
+                <span class="label">THE BACKLOG</span>
+                <div style="display: flex; gap: 10px;">
+                    <button id="low-energy-filter" class="filter-tag">
+                        <i class="ph ph-battery-low"></i> Low Energy
+                    </button>
+                    <button id="clear-completed-btn" class="filter-tag" style="color: var(--text-muted); border-color: var(--input-border);">
+                        <i class="ph ph-trash"></i> Clear Done
+                    </button>
+                </div>
+            </div>
+            
+            <div id="backlog-container">
+                <!-- Tasks inject here -->
+            </div>
+        </main>
+        <footer>
+            Built <del>by</del> for <a href="https://www.linkedin.com/in/pranav1906/" target="_blank" class="glow-link">pranav</a>
+        </footer>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>

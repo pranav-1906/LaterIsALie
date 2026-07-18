@@ -1,0 +1,276 @@
+:root {
+    /* Light Mode Variables */
+    --bg-color: #f3f4f6;
+    --panel-bg: rgba(255, 255, 255, 0.7);
+    --panel-border: rgba(255, 255, 255, 0.5);
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --primary: #0ea5e9;
+    --primary-hover: #0284c7;
+    --accent-bg: #e0f2fe;
+    --input-bg: #ffffff;
+    --input-border: #e5e7eb;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    --quick-win: #10b981;
+}
+
+[data-theme="dark"] {
+    /* Dark Mode Variables */
+    --bg-color: #0f1115;
+    --panel-bg: rgba(26, 29, 36, 0.7);
+    --panel-border: rgba(255, 255, 255, 0.05);
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+    --primary: #00c3e3;
+    --primary-hover: #00a0ba;
+    --accent-bg: rgba(0, 195, 227, 0.05);
+    --input-bg: #1f232b;
+    --input-border: #374151;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    --quick-win: #10b981;
+}
+
+* { box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    margin: 0; 
+    padding: 2rem 1rem;
+    display: flex; 
+    justify-content: center;
+    min-height: 100vh;
+    
+    /* The Pro Background: A single ambient glow + a precision dot grid */
+    background-image: 
+        radial-gradient(circle at top center, rgba(0, 195, 227, 0.08) 0%, transparent 50%),
+        radial-gradient(var(--input-border) 1px, transparent 1px);
+    background-size: 100% 100%, 24px 24px;
+    background-position: center top, center center;
+    background-attachment: fixed;
+}
+
+/* Upgraded Glassmorphism */
+.glass-panel {
+    background: var(--panel-bg);
+    backdrop-filter: blur(16px); 
+    -webkit-backdrop-filter: blur(16px);
+    
+    /* Simulating the physical edge of cut glass */
+    border: 1px solid var(--panel-border);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    
+    border-radius: 16px; 
+    padding: 1.5rem; 
+    margin-bottom: 1.5rem;
+    
+    /* A softer, wider shadow to lift it off the grid */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.app-container { width: 100%; max-width: 640px; }
+
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+h1 { font-size: 2rem; font-weight: 800; margin: 0; letter-spacing: -0.5px; }
+.dot { color: var(--primary); }
+
+.icon-btn {
+    background: transparent; border: none; color: var(--text-muted);
+    font-size: 1.5rem; cursor: pointer; padding: 0.5rem;
+    border-radius: 50%; transition: all 0.2s;
+}
+.icon-btn:hover { color: var(--text-main); background: var(--panel-border); }
+
+/* Glassmorphism Panels */
+.glass-panel {
+    background: var(--panel-bg);
+    backdrop-filter: blur(16px); 
+    -webkit-backdrop-filter: blur(16px);
+    
+    /* Simulating the physical edge of cut glass */
+    border: 1px solid var(--panel-border);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    
+    border-radius: 16px; 
+    padding: 1.5rem; 
+    margin-bottom: 1.5rem;
+    
+    /* A softer, wider shadow to lift it off the grid */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+.accent-panel { border-left: 4px solid var(--primary); background: var(--accent-bg); }
+
+.panel-header h2 { font-size: 1.1rem; margin: 0 0 1.2rem 0; display: flex; align-items: center; gap: 8px; color: var(--primary); }
+
+/* Inputs & Forms */
+.input-grid { display: flex; gap: 1rem; align-items: flex-end; margin-bottom: 1rem; }
+.three-cols { display: grid; grid-template-columns: repeat(3, 1fr); }
+.input-group { display: flex; flex-direction: column; flex: 1; }
+label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+input {
+    background: var(--input-bg); border: 1px solid var(--input-border);
+    color: var(--text-main); padding: 0.8rem; border-radius: 8px;
+    font-size: 0.95rem; outline: none; transition: all 0.2s;
+}
+input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0, 195, 227, 0.1); }
+
+.task-input-wrapper { position: relative; margin-bottom: 1rem; }
+.task-input-wrapper input { width: 100%; font-size: 1.1rem; padding: 1rem; }
+.corner-hint { position: absolute; right: 1rem; top: 1.1rem; color: var(--text-muted); font-size: 0.8rem; opacity: 0.7; }
+
+/* Buttons */
+button { border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.primary-btn { background: var(--primary); color: #fff; padding: 0.8rem 1.5rem; height: 42px; }
+.primary-btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+.secondary-btn { width: 100%; background: var(--input-bg); color: var(--text-main); padding: 1rem; border: 1px solid var(--input-border); margin-top: 0.5rem; }
+.secondary-btn:hover { background: var(--panel-border); }
+
+/* Filters & Backlog */
+.backlog-controls { display: flex; justify-content: space-between; align-items: center; margin: 2rem 0 1rem 0; }
+.label { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; }
+
+.filter-tag {
+    background: transparent; border: 1px solid var(--input-border);
+    color: var(--text-muted); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem;
+}
+.filter-tag.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* Task Items & Animations */
+.task-item {
+    background: var(--input-bg); border: 1px solid var(--input-border);
+    border-radius: 12px; padding: 1rem; margin-bottom: 0.8rem;
+    display: flex; justify-content: space-between; align-items: center;
+    /* The "Void" slide-in animation */
+    animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform-origin: top;
+}
+
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateY(-20px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.task-info { display: flex; flex-direction: column; gap: 4px; }
+.task-title { font-weight: 600; font-size: 1rem; transition: all 0.3s ease; }
+.task-meta { font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 12px; align-items: center; }
+
+/* 2-Minute Rule Visual Tag */
+.quick-win-badge {
+    background: rgba(16, 185, 129, 0.1); color: var(--quick-win);
+    padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 700;
+}
+
+/* Micro-Interaction: Task Completion */
+.task-item.completed .task-title {
+    text-decoration: line-through; color: var(--text-muted);
+}
+.task-item.completed {
+    opacity: 0.6; border-color: transparent; background: transparent;
+    transform: scale(0.98);
+}
+
+.check-btn {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 2px solid var(--input-border); background: transparent;
+    color: transparent; font-size: 1.2rem;
+}
+.task-item.completed .check-btn {
+    background: var(--primary); border-color: var(--primary); color: #fff;
+}
+.check-btn:hover { border-color: var(--primary); }
+
+
+/* Footer & Glowing Link */
+footer { 
+    margin-top: 3rem; 
+    text-align: center; 
+    color: var(--text-muted); 
+    font-size: 0.85rem; 
+    padding-bottom: 2rem;
+}
+
+.glow-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 800;
+    text-shadow: 0 0 8px rgba(0, 195, 227, 0.6);
+    transition: all 0.3s ease;
+}
+
+.glow-link:hover {
+    color: #fff;
+    text-shadow: 0 0 12px var(--primary), 0 0 24px var(--primary);
+}
+
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 640px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+
+    header {
+        margin-bottom: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .glass-panel {
+        padding: 1.2rem;
+    }
+
+    /* Stack the input groups vertically on small screens */
+    .input-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    /* Collapse the 3-column grid into a single column */
+    .three-cols {
+        grid-template-columns: 1fr;
+        display: grid; 
+    }
+
+    /* Adjust main input sizing */
+    .task-input-wrapper input {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+    
+    .corner-hint {
+        display: none; /* Hide keyboard shortcut hint on mobile devices */
+    }
+
+    /* Adjust backlog controls to wrap nicely */
+    .backlog-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .backlog-controls div {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    /* Ensure task information doesn't overflow */
+    .task-meta {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .check-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+    }
+}
