@@ -1,5 +1,7 @@
 # LaterIsALie. ⚡
 
+**Live Demo:** [https://laterisalie-erlc.onrender.com/](https://laterisalie-erlc.onrender.com/)
+
 > **Because later never comes.**  
 > A hyper-focused, anti-procrastination task manager designed to eliminate decision fatigue. 
 
@@ -25,7 +27,7 @@ Input your available time and current energy (1-5), and the app will instantly f
 
 ### 🔒 Anonymous Persistent Memory
 *   **No Login Required:** Uses an Anonymous Client ID system generated via `localStorage`.
-*   **SQLite Database:** Tasks are permanently saved to a backend database mapped to your unique browser session. You can refresh, close the tab, or return days later, and your specific backlog will still be there.
+*   **SQLite Database:** Tasks are permanently saved to a backend database mapped to your unique browser session. You can refresh, close the tab, or return days later, and your specific backlog will still be there. *(Note: As this is hosted on a free Render tier, the SQLite database resets when the server spins down from inactivity).*
 
 ---
 
