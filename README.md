@@ -1,7 +1,5 @@
 # LaterIsALie. ⚡
 
-**Live Demo:** [https://laterisalie-erlc.onrender.com/](https://laterisalie-erlc.onrender.com/)
-
 > **Because later never comes.**  
 > A hyper-focused, anti-procrastination task manager designed to eliminate decision fatigue. 
 
